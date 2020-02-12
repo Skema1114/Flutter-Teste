@@ -7,17 +7,30 @@ class TesteApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: Scaffold(
-        body: ListaTransferencias(),
+      theme: ThemeData(
+        primaryColor: Colors.green[900],
+        accentColor: Colors.blueAccent[700],
+        buttonTheme: ButtonThemeData(
+            buttonColor: Colors.blueAccent[700],
+            textTheme: ButtonTextTheme.primary),
       ),
+      home: ListaTransferencias(),
     );
   }
 }
 
 // FORMULÁRIO DAS TRANSFERENCIAS
-class FormularioTransferencia extends StatelessWidget {
+class FormularioTransferencia extends StatefulWidget {
+  @override
+  State<StatefulWidget> createState() {
+    return FormularioTransferenciaState();
+  }
+}
+
+// WIDGET STATE PARA O FORMULARIO DE TRANSFERENCIAS
+class FormularioTransferenciaState extends State<FormularioTransferencia> {
   final TextEditingController _controladorCampoNumeroConta =
-  TextEditingController();
+      TextEditingController();
   final TextEditingController _controladorCampoValor = TextEditingController();
 
   @override
@@ -26,30 +39,31 @@ class FormularioTransferencia extends StatelessWidget {
       appBar: AppBar(
         title: Text('Criando Trasferencia'),
       ),
-      body: Column(
-        children: <Widget>[
-          Editor(
-            controlador: _controladorCampoNumeroConta,
-            rotulo: 'Número da Conta',
-            dica: '1234',
-          ),
-          Editor(
-            controlador: _controladorCampoValor,
-            rotulo: 'Valor',
-            dica: '0.00',
-            icone: Icons.monetization_on,
-          ),
-          RaisedButton(
-            onPressed: () {
-              _criaTransferencia(context);
-            },
-            child: Text('Confirmar'),
-          )
-        ],
+      body: SingleChildScrollView(
+        child: Column(
+          children: <Widget>[
+            Editor(
+              controlador: _controladorCampoNumeroConta,
+              rotulo: 'Número da Conta',
+              dica: '1234',
+            ),
+            Editor(
+              controlador: _controladorCampoValor,
+              rotulo: 'Valor',
+              dica: '0.00',
+              icone: Icons.monetization_on,
+            ),
+            RaisedButton(
+              onPressed: () {
+                _criaTransferencia(context);
+              },
+              child: Text('Confirmar'),
+            )
+          ],
+        ),
       ),
     );
   }
-
 
   void _criaTransferencia(BuildContext context) {
     final int numeroConta = int.tryParse(_controladorCampoNumeroConta.text);
@@ -105,10 +119,6 @@ class ListaTransferencias extends StatefulWidget {
 class ListaTransferenciasState extends State<ListaTransferencias> {
   @override
   Widget build(BuildContext context) {
-    widget._transferencias.add(Transferencia(100.0, 1000));
-    widget._transferencias.add(Transferencia(100.0, 1000));
-    widget._transferencias.add(Transferencia(100.0, 1000));
-    widget._transferencias.add(Transferencia(100.0, 1000));
     return Scaffold(
       appBar: AppBar(
         title: Text("Transferências"),
@@ -124,13 +134,19 @@ class ListaTransferenciasState extends State<ListaTransferencias> {
         child: Icon(Icons.add),
         onPressed: () {
           final Future<Transferencia> future =
-          Navigator.push(context, MaterialPageRoute(builder: (context) {
+              Navigator.push(context, MaterialPageRoute(builder: (context) {
             return FormularioTransferencia();
           }));
           future.then((transferenciaRecebida) {
-            debugPrint('chegou no then do fuure');
-            debugPrint('$transferenciaRecebida');
-            widget._transferencias.add(transferenciaRecebida);
+            Future.delayed(Duration(seconds: 1), () {
+              debugPrint('chegou no then do fuure');
+              debugPrint('$transferenciaRecebida');
+              if (transferenciaRecebida != null) {
+                setState(() {
+                  widget._transferencias.add(transferenciaRecebida);
+                });
+              }
+            });
           });
         },
       ),
