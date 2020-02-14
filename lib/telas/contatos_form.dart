@@ -59,7 +59,7 @@ class _ContatosFormState extends State<ContatosForm> {
                         int.tryParse(_numeroContaController.text);
                     //criando uma instancia do contato e adicionando os valores
                     //trocando de tela e enviando os dados, ou seja, um novo contato
-                    final Contato novoContato = Contato(nome, numeroConta);
+                    final Contato novoContato = Contato(0, nome, numeroConta);
                     Navigator.pop(context, novoContato);
                   },
                 ),

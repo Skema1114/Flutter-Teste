@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutterteste/telas/contatos_form.dart';
-import 'package:flutterteste/telas/contatos_list.dart';
 import 'package:flutterteste/telas/dashboard.dart';
 
 void main() => runApp(TesteAppPersistencia());
