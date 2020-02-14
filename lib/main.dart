@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 
 void main() => runApp(TesteAppPersistencia());
@@ -10,6 +12,22 @@ class TesteAppPersistencia extends StatelessWidget {
       home: Scaffold(
         appBar: AppBar(
           title: Text('Dashboard'),
+        ),
+        body: Column(
+          children: <Widget>[
+            Image.asset('images/empresa_logo.png'),
+            Container(
+              height: 120,
+              width: 100,
+              color: Colors.purple,
+              child: Column(
+                children: <Widget>[
+                  Icon(Icons.people),
+                  Text('Contatos')
+                ],
+              ),
+            )
+          ],
         ),
       ),
     );
