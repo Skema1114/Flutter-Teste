@@ -7,6 +7,6 @@ class Contato{
 
   @override
   String toString() {
-    return 'Contato{nome: $nome, numeroConta: $numeroConta}';
+    return 'Contato{id: $id, nome: $nome, numeroConta: $numeroConta}';
   }
 }
