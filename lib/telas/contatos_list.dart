@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutterteste/database/app_database.dart';
+import 'package:flutterteste/modelos/contato.dart';
 import 'package:flutterteste/modelos/texto.dart';
 import 'package:flutterteste/telas/contatos_form.dart';
 
@@ -9,36 +11,86 @@ class ContatosList extends StatelessWidget {
       appBar: AppBar(
         title: Text(nomeTelaListContato),
       ),
-      body: ListView(
-        children: <Widget>[
-          Card(
-            child: ListTile(
-              title: Text(
-                'Alex',
-                style: TextStyle(
-                  fontSize: 24.0,
+      body: FutureBuilder<List<Contato>>(
+        initialData: List(),
+        future: Future.delayed(Duration(seconds: 1)).then((value) => findAll()),
+        builder: (context, snapshot) {
+          switch (snapshot.connectionState) {
+            case ConnectionState.none:
+              // TODO: Handle this case.
+              break;
+
+            case ConnectionState.waiting:
+              // TODO: Handle this case.
+              return Center(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: <Widget>[
+                    CircularProgressIndicator(),
+                    Text('Loading...')
+                  ],
                 ),
-              ),
-              subtitle: Text(
-                '1000',
-                style: TextStyle(
-                  fontSize: 16.0,
-                ),
-              ),
-            ),
-          )
-        ],
+              );
+              break;
+
+            case ConnectionState.active:
+              // TODO: Handle this case.
+              break;
+
+            case ConnectionState.done:
+              // TODO: Handle this case.
+              final List<Contato> contatos = snapshot.data;
+              return ListView.builder(
+                itemBuilder: (context, index) {
+                  final Contato contato = contatos[index];
+                  return _ItemContato(contato);
+                },
+                itemCount: contatos.length,
+              );
+              break;
+          }
+          return Text('Erro desconhecido!');
+        },
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          Navigator.of(context).push(
-            MaterialPageRoute(
-              builder: (context) => ContatosForm(),
-            ),
-            //pegou o novo contato que foi mandado do form
-          ).then((novoContato) => debugPrint(novoContato.toString()));
+          Navigator.of(context)
+              .push(
+                MaterialPageRoute(
+                  builder: (context) => ContatosForm(),
+                ),
+                //pegou o novo contato que foi mandado do form
+              )
+              .then((novoContato) => debugPrint(novoContato.toString()));
         },
         child: Icon(Icons.add),
+      ),
+    );
+  }
+}
+
+class _ItemContato extends StatelessWidget {
+  final Contato contato;
+
+  _ItemContato(this.contato);
+
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      child: ListTile(
+        title: Text(
+          contato.nome,
+          style: TextStyle(
+            fontSize: 24.0,
+          ),
+        ),
+        subtitle: Text(
+          contato.numeroConta.toString(),
+          style: TextStyle(
+            fontSize: 16.0,
+          ),
+        ),
       ),
     );
   }

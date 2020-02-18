@@ -5,9 +5,6 @@ import 'modelos/contato.dart';
 
 void main() {
   runApp(TesteAppPersistencia());
-  save(Contato(1, 'jeovane', 1000)).then((id) {
-    findAll().then((contacts) => debugPrint(contacts.toString()));
-  });
 }
 
 class TesteAppPersistencia extends StatelessWidget {
