@@ -55,14 +55,11 @@ class ContatosList extends StatelessWidget {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          Navigator.of(context)
-              .push(
-                MaterialPageRoute(
-                  builder: (context) => ContatosForm(),
-                ),
-                //pegou o novo contato que foi mandado do form
-              )
-              .then((novoContato) => debugPrint(novoContato.toString()));
+          Navigator.of(context).push(
+            MaterialPageRoute(
+              builder: (context) => ContatosForm(),
+            ),
+          );
         },
         child: Icon(Icons.add),
       ),

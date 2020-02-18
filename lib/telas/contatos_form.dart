@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutterteste/database/app_database.dart';
 import 'package:flutterteste/modelos/contato.dart';
 import 'package:flutterteste/modelos/texto.dart';
 
@@ -60,7 +61,8 @@ class _ContatosFormState extends State<ContatosForm> {
                     //criando uma instancia do contato e adicionando os valores
                     //trocando de tela e enviando os dados, ou seja, um novo contato
                     final Contato novoContato = Contato(0, nome, numeroConta);
-                    Navigator.pop(context, novoContato);
+                    save(novoContato)
+                        .then((id) => Navigator.pop(context));
                   },
                 ),
               ),
