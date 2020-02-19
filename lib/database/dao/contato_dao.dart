@@ -32,7 +32,7 @@ class ContatoDAO{
     return contatos;
   }
 
-  
+
   Map<String, dynamic> _toMap(Contato con) {
     final Map<String, dynamic> contatoMap = Map();
 
