@@ -1,6 +1,6 @@
-import 'package:sqflite/sqflite.dart';
-import 'package:flutterteste/modelos/contato.dart';
 import 'package:flutterteste/database/app_database.dart';
+import 'package:flutterteste/modelos/contato.dart';
+import 'package:sqflite/sqflite.dart';
 
 class ContatoDAO{
   static const String _nomeTabela = 'contatos';

@@ -1,8 +1,8 @@
-import 'package:flutter/material.dart';
 import 'package:flutterteste/database/dao/contato_dao.dart';
+import 'package:flutterteste/telas/contatos_form.dart';
 import 'package:flutterteste/modelos/contato.dart';
 import 'package:flutterteste/modelos/texto.dart';
-import 'package:flutterteste/telas/contatos_form.dart';
+import 'package:flutter/material.dart';
 
 class ContatosList extends StatelessWidget {
   final ContatoDAO _contatoDAO = ContatoDAO();

@@ -1,7 +1,7 @@
-import 'package:flutter/material.dart';
 import 'package:flutterteste/database/dao/contato_dao.dart';
 import 'package:flutterteste/modelos/contato.dart';
 import 'package:flutterteste/modelos/texto.dart';
+import 'package:flutter/material.dart';
 
 class ContatosForm extends StatefulWidget {
   @override
