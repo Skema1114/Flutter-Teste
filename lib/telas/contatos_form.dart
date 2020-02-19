@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutterteste/database/app_database.dart';
+import 'package:flutterteste/database/dao/contato_dao.dart';
 import 'package:flutterteste/modelos/contato.dart';
 import 'package:flutterteste/modelos/texto.dart';
 
@@ -10,8 +10,8 @@ class ContatosForm extends StatefulWidget {
 
 class _ContatosFormState extends State<ContatosForm> {
   final TextEditingController _nomeController = TextEditingController();
-
   final TextEditingController _numeroContaController = TextEditingController();
+  final ContatoDAO _contatoDAO = ContatoDAO();
 
   @override
   Widget build(BuildContext context) {
@@ -61,7 +61,7 @@ class _ContatosFormState extends State<ContatosForm> {
                     //criando uma instancia do contato e adicionando os valores
                     //trocando de tela e enviando os dados, ou seja, um novo contato
                     final Contato novoContato = Contato(0, nome, numeroConta);
-                    save(novoContato)
+                    _contatoDAO.save(novoContato)
                         .then((id) => Navigator.pop(context));
                   },
                 ),

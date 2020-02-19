@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:flutterteste/database/app_database.dart';
+import 'package:flutterteste/database/dao/contato_dao.dart';
 import 'package:flutterteste/modelos/contato.dart';
 import 'package:flutterteste/modelos/texto.dart';
 import 'package:flutterteste/telas/contatos_form.dart';
 
 class ContatosList extends StatelessWidget {
+  final ContatoDAO _contatoDAO = ContatoDAO();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -13,7 +15,7 @@ class ContatosList extends StatelessWidget {
       ),
       body: FutureBuilder<List<Contato>>(
         initialData: List(),
-        future: Future.delayed(Duration(seconds: 1)).then((value) => findAll()),
+        future: Future.delayed(Duration(seconds: 1)).then((value) => _contatoDAO.findAll()),
         builder: (context, snapshot) {
           switch (snapshot.connectionState) {
             case ConnectionState.none:

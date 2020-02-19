@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutterteste/database/app_database.dart';
 import 'package:flutterteste/telas/dashboard.dart';
-import 'modelos/contato.dart';
 
 void main() {
   runApp(TesteAppPersistencia());
