@@ -1,3 +1,4 @@
+import 'package:flutterteste/telas/transacoes_list.dart';
 import 'package:flutterteste/telas/contatos_list.dart';
 import 'package:flutterteste/modelos/texto.dart';
 import 'package:flutter/material.dart';
@@ -25,15 +26,13 @@ class Dashboard extends StatelessWidget {
                   containerTextTransferencia,
                   Icons.monetization_on,
                   espaco: EdgeInsets.all(8.0),
-                  onClick: () {
-                    _showListaContatos(context);
-                  },
+                  onClick: () => _showProximaTela(context, ContatosList()),
                 ),
                 _ItemMenu(
                   containerTextTransacao,
                   Icons.description,
                   espaco: EdgeInsets.all(0.0),
-                  onClick: () => print('Transação foi clickado!'),
+                  onClick: () => _showProximaTela(context, TransacoesList()),
                 ),
                 _ItemMenu(
                   containerTextTeste,
@@ -50,10 +49,12 @@ class Dashboard extends StatelessWidget {
   }
 }
 
-void _showListaContatos(BuildContext context) {
-  Navigator.of(context).push(MaterialPageRoute(
-    builder: (context) => ContatosList(),
-  ));
+void _showProximaTela(BuildContext context, Widget tela) {
+  Navigator.of(context).push(
+    MaterialPageRoute(
+      builder: (context) => tela,
+    ),
+  );
 }
 
 class _ItemMenu extends StatelessWidget {
