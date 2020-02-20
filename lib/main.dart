@@ -4,7 +4,7 @@ import 'package:flutterteste/web_apis/http/webclient.dart';
 
 void main() {
   runApp(TesteAppPersistencia());
-  findAll();
+  findAll().then((transacoes) => print('NOVAS TRANSAÇÕES: $transacoes'));
 }
 
 class TesteAppPersistencia extends StatelessWidget {
