@@ -8,7 +8,7 @@ class Dashboard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(nomeTelaDashboard),
+        title: Text(telaDashboard),
       ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -16,29 +16,29 @@ class Dashboard extends StatelessWidget {
         children: <Widget>[
           Padding(
             padding: const EdgeInsets.all(8.0),
-            child: Image.asset('images/empresa_logo.png'),
+            child: Image.asset(imgCaminho),
           ),
           SingleChildScrollView(
             scrollDirection: Axis.horizontal,
             child: Row(
               children: <Widget>[
                 _ItemMenu(
-                  containerTextTransferencia,
+                  containerTransferencia,
                   Icons.monetization_on,
                   espaco: EdgeInsets.all(8.0),
                   onClick: () => _showProximaTela(context, ContatosList()),
                 ),
                 _ItemMenu(
-                  containerTextTransacao,
+                  containerTransacao,
                   Icons.description,
                   espaco: EdgeInsets.all(0.0),
                   onClick: () => _showProximaTela(context, TransacoesList()),
                 ),
                 _ItemMenu(
-                  containerTextTeste,
+                  containerTeste,
                   Icons.fingerprint,
                   espaco: EdgeInsets.all(8.0),
-                  onClick: () => print('Este é um Teste!'),
+                  onClick: () => print(containerTeste),
                 ),
               ],
             ),

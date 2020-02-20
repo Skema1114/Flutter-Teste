@@ -1,16 +1,18 @@
 // DASHBOARD
-const containerTextContatos = 'Contatos';
-const containerTextTransferencia = 'Transferências';
-const containerTextTransacao = 'Transações';
-const containerTextTeste = 'Teste';
-const nomeTelaDashboard = 'Dashboard';
-
+const containerTransferencia = 'Transferências';
+const imgCaminho = 'images/empresa_logo.png';
+const containerTransacao = 'Transações';
+const containerContatos = 'Contatos';
+const telaDashboard = 'Dashboard';
+const containerTeste = 'Teste';
 // CONTATOS LISTA
-const nomeTelaListContato = 'Lista de Contatos';
-
+const msgErroDesconhecido = 'Erro desconhecido!';
+const telaContatoList = 'Lista de Contatos';
+const msgCarregando = 'Loading...';
 // CONTATOS FORMULARIO
-const textFieldRotuloNumero = 'Número da Conta';
-const nomeTelaFormContatos = 'Novo Contato';
-const textFieldRotuloNome = 'Nome Completo';
-const raisedButtonRotuloCriar = 'Criar';
-
+const telaContatosForm = 'Novo Contato';
+const textNumero = 'Número da Conta';
+const textNome = 'Nome Completo';
+const buttonCriar = 'Criar';
+// APP DATABASE
+const bancoNome = 'bytebank.db';

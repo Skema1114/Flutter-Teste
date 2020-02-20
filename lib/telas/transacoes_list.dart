@@ -11,7 +11,7 @@ class TransacoesList extends StatelessWidget {
     transacoes.add(Transacao(100.0, Contato(0, 'Alex', 1000)));
     return Scaffold(
       appBar: AppBar(
-        title: Text(containerTextTransacao),
+        title: Text(containerTransacao),
       ),
       body: ListView.builder(
         itemBuilder: (context, index) {

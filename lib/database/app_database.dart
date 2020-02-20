@@ -1,10 +1,11 @@
 import 'package:flutterteste/database/dao/contato_dao.dart';
+import 'package:flutterteste/modelos/texto.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:path/path.dart';
 
 
 Future<Database> getDatabase() async {
-  final String path = join(await getDatabasesPath(), 'bytebank.db');
+  final String path = join(await getDatabasesPath(), bancoNome);
 
   return openDatabase(
     path,

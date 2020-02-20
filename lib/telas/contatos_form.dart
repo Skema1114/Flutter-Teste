@@ -17,7 +17,7 @@ class _ContatosFormState extends State<ContatosForm> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(nomeTelaFormContatos),
+        title: Text(telaContatosForm),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -28,7 +28,7 @@ class _ContatosFormState extends State<ContatosForm> {
               child: TextField(
                 controller: _nomeController,
                 decoration: InputDecoration(
-                  labelText: textFieldRotuloNome,
+                  labelText: textNome,
                 ),
                 style: TextStyle(
                   fontSize: 16.0,
@@ -38,7 +38,7 @@ class _ContatosFormState extends State<ContatosForm> {
             TextField(
               controller: _numeroContaController,
               decoration: InputDecoration(
-                labelText: textFieldRotuloNumero,
+                labelText: textNumero,
               ),
               style: TextStyle(
                 fontSize: 16.0,
@@ -52,7 +52,7 @@ class _ContatosFormState extends State<ContatosForm> {
                 // so envolver o elemento em um SizedBox
                 width: double.maxFinite,
                 child: RaisedButton(
-                  child: Text(raisedButtonRotuloCriar),
+                  child: Text(buttonCriar),
                   onPressed: () {
                     // pegando o que é digitado nos campos por meio do controller
                     final String nome = _nomeController.text;

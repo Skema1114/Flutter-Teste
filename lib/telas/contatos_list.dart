@@ -11,7 +11,7 @@ class ContatosList extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(nomeTelaListContato),
+        title: Text(telaContatoList),
       ),
       body: FutureBuilder<List<Contato>>(
         initialData: List(),
@@ -30,7 +30,7 @@ class ContatosList extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: <Widget>[
                     CircularProgressIndicator(),
-                    Text('Loading...')
+                    Text(msgCarregando)
                   ],
                 ),
               );
@@ -52,7 +52,7 @@ class ContatosList extends StatelessWidget {
               );
               break;
           }
-          return Text('Erro desconhecido!');
+          return Text(msgErroDesconhecido);
         },
       ),
       floatingActionButton: FloatingActionButton(
