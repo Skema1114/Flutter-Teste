@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutterteste/telas/dashboard.dart';
+import 'package:flutterteste/web_apis/http/webclient.dart';
 
 void main() {
   runApp(TesteAppPersistencia());
+  findAll();
 }
 
 class TesteAppPersistencia extends StatelessWidget {
